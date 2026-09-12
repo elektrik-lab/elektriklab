@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ElektrikLab - elektrik hesaplama, teknik rehberler ve pratik tablolar">
+<title>ElektrikLab | Elektriğin Dijital Laboratuvarı</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7f6;color:#15211c}
+body{min-height:100vh}.top{position:sticky;top:0;z-index:20;background:#10201a;color:#fff;border-bottom:1px solid #1f3c32}
+.topin{max-width:1240px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:11px;cursor:pointer}.mark{width:40px;height:40px;border-radius:11px;background:#25b876;color:#072016;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold}.logo strong{display:block;font-size:20px}.logo small{display:block;color:#a9beb6;font-size:11px;margin-top:2px}
+.toplinks{display:flex;gap:8px;flex-wrap:wrap}.toplinks button{border:0;background:transparent;color:#dfe9e4;padding:9px 12px;border-radius:8px;cursor:pointer}.toplinks button:hover,.toplinks button.active{background:#1b352c}
+.wrap{max-width:1240px;margin:auto;padding:24px 18px 44px}.hero{display:grid;grid-template-columns:1.5fr .8fr;gap:20px;background:linear-gradient(135deg,#0f231c,#193b2e);border-radius:22px;padding:34px;color:#fff;box-shadow:0 12px 28px rgba(12,37,27,.12)}
+.hero .ey{color:#70dfad}.ey{font-size:11px;font-weight:bold;letter-spacing:1.2px}.hero h1{font-size:40px;line-height:1.1;margin:10px 0}.hero h1 em{font-style:normal;color:#66dda9}.hero p{color:#c7d7d1;max-width:690px;line-height:1.6}.hero-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:bold;cursor:pointer}.primary{background:#2ac184;color:#082117}.secondary{background:#fff;color:#16362a}.ghost{background:#edf3f0;color:#18352b}
+.hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px;display:grid;align-content:center;gap:16px}.hero-card .bolt{font-size:46px}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:rgba(255,255,255,.06);border-radius:12px;padding:14px}.stat b{font-size:22px;display:block}.stat span{color:#b6cbc2;font-size:12px}
+.page{display:none}.page.active{display:block}.section{margin-top:26px}.head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:13px}.head h2{margin:4px 0;font-size:23px}.muted{color:#66776f}.toolbar{display:flex;gap:10px;margin:16px 0}.search,.select{background:#fff;border:1px solid #d8e2dd;border-radius:11px;padding:12px 13px;font-size:14px;outline:none}.search{flex:1}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid #dde6e1;border-radius:15px;padding:17px;transition:.15s;box-shadow:0 4px 14px rgba(18,37,29,.04)}.card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(18,37,29,.08)}.card .icon{width:38px;height:38px;border-radius:10px;background:#e6f6ee;color:#117a4d;display:flex;align-items:center;justify-content:center;font-weight:bold}.card h3{margin:12px 0 6px;font-size:17px}.card p{margin:0;color:#66776f;font-size:13px;line-height:1.5}.cardrow{display:flex;justify-content:space-between;align-items:center;margin-top:15px;gap:8px}.link{border:0;background:transparent;color:#0b8b54;font-weight:bold;cursor:pointer;padding:7px 0}.star{border:0;background:#f0f5f2;border-radius:8px;padding:7px 9px;cursor:pointer}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:#fff;border:1px solid #dde6e1;border-radius:15px;padding:18px}.panel h3{margin:0 0 6px}.panel p{color:#66776f;font-size:13px;line-height:1.55}
+.detail{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:20px}.box{background:#fff;border:1px solid #dde6e1;border-radius:15px;padding:20px}.box h1{margin:0 0 7px;font-size:27px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.field label{font-size:12px;font-weight:bold;color:#46584f;display:block;margin-bottom:6px}.field input,.field select{width:100%;border:1px solid #ccd8d2;border-radius:9px;padding:11px;background:#fff;font-size:14px}.result{background:#0f2b21;color:#fff;border-radius:15px;padding:22px}.result .small{color:#a9c2b7;font-size:12px}.result .big{font-size:33px;font-weight:bold;margin:10px 0;color:#70e0af}.formula{background:#eaf5ef;border-radius:10px;padding:11px;color:#176342;font-family:monospace;margin-top:12px}.note{border-left:4px solid #2abf82;background:#f1f7f4;padding:11px 13px;margin-top:14px;color:#596c63;font-size:12px;line-height:1.5}
+.article{background:#fff;border:1px solid #dde6e1;border-radius:15px;padding:22px;line-height:1.7}.article h2{font-size:20px}.article code{background:#edf4f0;padding:2px 5px;border-radius:5px}.tablebox{overflow:auto;background:#fff;border:1px solid #dde6e1;border-radius:15px}.tablebox table{width:100%;border-collapse:collapse;min-width:600px}.tablebox th,.tablebox td{text-align:left;padding:11px 13px;border-bottom:1px solid #e7eeea}.tablebox th{background:#f0f5f2}
+.footer{background:#10201a;color:#d1ded8;padding:28px 18px}.footerin{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px}.footer small{color:#9eb2aa;max-width:650px}
+@media(max-width:900px){.hero,.detail,.grid2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.toplinks{display:none}}@media(max-width:600px){.wrap{padding:15px 11px 35px}.hero{padding:22px}.hero h1{font-size:30px}.cards{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.head{align-items:start;flex-direction:column}.footerin{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="topin">
+<div class="logo" onclick="showPage('home')"><div class="mark">⚡</div><div><strong>ElektrikLab</strong><small>Elektriğin dijital laboratuvarı</small></div></div>
+<nav class="toplinks">
+<button id="navHome" onclick="showPage('home')">Ana Sayfa</button>
+<button id="navCalc" onclick="showPage('calculators')">Hesaplamalar</button>
+<button id="navGuides" onclick="showPage('guides')">Rehberler</button>
+<button id="navTables" onclick="showPage('tables')">Tablolar</button>
+</nav>
+</div>
+</header>
+
+<main class="wrap">
+<section id="home" class="page active">
+<div class="hero">
+<div><div class="ey">ELEKTRİK TEKNİK ARAÇLARI</div><h1>Hesapla. Öğren.<br><em>Doğru karar ver.</em></h1><p>Elektrikçiler, teknisyenler ve öğrenciler için pratik hesaplamalar, teknik açıklamalar ve saha referansları.</p><div class="hero-actions"><button class="btn primary" onclick="showPage('calculators')">Hesaplamalara Git →</button><button class="btn secondary" onclick="showPage('guides')">Teknik Rehberler</button></div></div>
+<div class="hero-card"><div class="bolt">⚡</div><div><div class="small">ELEKTRİKLAB</div><b style="font-size:24px">Tek platform</b><div class="muted" style="color:#b6cbc2;margin-top:5px">Hesapla • Öğren • Kontrol et</div></div><div class="statgrid"><div class="stat"><b id="countStat">40+</b><span>araç</span></div><div class="stat"><b>6</b><span>kategori</span></div></div></div>
+</div>
+<div class="section"><div class="head"><div><div class="ey">POPÜLER</div><h2>Hızlı hesaplamalar</h2></div><button class="link" onclick="showPage('calculators')">Tümünü gör →</button></div><div id="popular" class="cards"></div></div>
+<div class="section grid2"><div class="panel"><h3>⚠️ Güvenlik ve tasarım notu</h3><p>Bu araçlar ön hesaplama ve eğitim amacı taşır. Kablo, sigorta, kontaktör, koruma ve tesisat seçimleri; gerçek kurulum şartları, üretici verileri ve geçerli standartlara göre doğrulanmalıdır.</p></div><div class="panel"><h3>📘 Neyi hedefliyoruz?</h3><p>ElektrikLab'ı zamanla motor, kablo, PLC, pano, kompanzasyon, enerji ve saha araçlarını tek yerde toplayan Türkçe bir teknik platform haline getirmek.</p></div></div>
+</section>
+
+<section id="calculators" class="page">
+<div class="head"><div><div class="ey">HESAPLAMA MERKEZİ</div><h2>Elektrik hesaplamaları</h2><div class="muted">Bir araç seç, değerleri gir ve sonucu ayrıntısıyla gör.</div></div></div>
+<div class="toolbar"><input id="search" class="search" onkeyup="renderCalc()" placeholder="Örn. motor akımı, kablo, ohm..."><select id="cat" class="select" onchange="renderCalc()"><option value="all">Tüm kategoriler</option><option value="temel">Temel Elektrik</option><option value="motor">Motor & Kumanda</option><option value="kablo">Kablo & Hat</option><option value="komp">Kompanzasyon</option><option value="enerji">Enerji & Tüketim</option><option value="oto">Otomasyon & PLC</option></select></div>
+<div id="calcGrid" class="cards"></div>
+</section>
+
+<section id="detail" class="page"><div id="detailContent"></div></section>
+
+<section id="guides" class="page">
+<div class="head"><div><div class="ey">TEKNİK KÜTÜPHANE</div><h2>Teknik rehberler</h2><div class="muted">Formülleri ve temel mantığı anlaşılır biçimde öğren.</div></div></div>
+<div id="guideGrid" class="cards"></div>
+</section>
+
+<section id="guideDetail" class="page"><div id="guideDetailContent"></div></section>
+
+<section id="tables" class="page">
+<div class="head"><div><div class="ey">SAHA REFERANSLARI</div><h2>Pratik tablolar</h2><div class="muted">Örnek değerler ve hızlı başvuru tabloları.</div></div></div>
+<div class="tablebox"><table><thead><tr><th>Kesit</th><th>Örnek kullanım</th><th>Not</th></tr></thead><tbody>
+<tr><td>1,5 mm²</td><td>Aydınlatma devreleri</td><td>Kesin seçim kurulum koşullarına bağlıdır.</td></tr>
+<tr><td>2,5 mm²</td><td>Priz devreleri</td><td>Koruma elemanı ve döşeme şekli kontrol edilmelidir.</td></tr>
+<tr><td>4 mm²</td><td>Orta güçlü hatlar</td><td>Uzunluk ve gerilim düşümü ayrıca incelenir.</td></tr>
+<tr><td>6 mm²</td><td>Daha yüksek güçlü devreler</td><td>Akım taşıma kapasitesi tablo üzerinden doğrulanmalıdır.</td></tr>
+<tr><td>10 mm²</td><td>Yüksek güçlü beslemeler</td><td>Kurulum ve termik koşullar önemlidir.</td></tr>
+</tbody></table></div>
+</section>
+</main>
+
+<footer class="footer"><div class="footerin"><div><b>ElektrikLab</b><div style="margin-top:6px">Hesapla • Öğren • Kontrol et</div></div><small>Bilgilendirme amaçlıdır. Kritik elektrik tasarım ve koruma kararlarında yetkin kişi/mühendislik değerlendirmesi gerekir.</small></div></footer>
+
+<script>
+/* ES5 uyumlu JavaScript: modern arrow function, let/const, template literal veya spread kullanılmaz. */
+var calculators=[
+{id:"ohm",cat:"temel",icon:"Ω",name:"Ohm Kanunu",desc:"Gerilim ve akımdan direnci hesapla.",fields:[["v","Gerilim (V)",230],["i","Akım (A)",5]],run:function(x){return {value:n(x.v/x.i)+" Ω",formula:"R = V / I",detail:"Direnç",note:"İdeal DC yaklaşımı."}}},
+{id:"tekfaz",cat:"temel",icon:"I",name:"Tek Faz Akım",desc:"Tek faz aktif güçten yaklaşık akım.",fields:[["p","Güç (kW)",3],["v","Gerilim (V)",230],["pf","cosφ",0.95]],run:function(x){return {value:n(x.p*1000/(x.v*x.pf))+" A",formula:"I = P / (V × cosφ)",detail:"Akım",note:"Aktif güç ve cosφ varsayımı."}}},
+{id:"trifaze",cat:"temel",icon:"I₃",name:"Trifaze Akım",desc:"Trifaze aktif güçten hat akımı.",fields:[["p","Güç (kW)",7.5],["v","Hat gerilimi (V)",400],["pf","cosφ",0.85]],run:function(x){return {value:n(x.p*1000/(Math.sqrt(3)*x.v*x.pf))+" A",formula:"I = P / (√3 × V × cosφ)",detail:"Hat akımı",note:"Dengeli trifaze yük varsayımı."}}},
+{id:"guc",cat:"temel",icon:"kW",name:"Akım → Güç",desc:"Akım, gerilim ve cosφ ile aktif güç.",fields:[["i","Akım (A)",10],["v","Gerilim (V)",400],["pf","cosφ",0.9]],run:function(x){return {value:n(Math.sqrt(3)*x.v*x.i*x.pf/1000)+" kW",formula:"P = √3 × V × I × cosφ",detail:"Aktif güç",note:"Trifaze dengeli sistem varsayımı."}}},
+{id:"hp",cat:"temel",icon:"↔",name:"kW → HP",desc:"kW değerini metrik beygir gücüne çevir.",fields:[["kw","Güç (kW)",7.5]],run:function(x){return {value:n(x.kw*1.35962)+" HP",formula:"HP ≈ kW × 1,35962",detail:"Metrik hp",note:"Yaklaşık dönüşümdür."}}},
+{id:"motorakim",cat:"motor",icon:"M",name:"Motor Akımı",desc:"Motor gücü ve verimden yaklaşık nominal akım.",fields:[["p","Motor gücü (kW)",7.5],["v","Hat gerilimi (V)",400],["pf","cosφ",0.82],["eta","Verim",0.9]],run:function(x){return {value:n(x.p*1000/(Math.sqrt(3)*x.v*x.pf*x.eta))+" A",formula:"I = P / (√3 × V × cosφ × η)",detail:"Tahmini motor akımı",note:"Motor etiketindeki nominal akım tasarımda esas alınmalıdır."}}},
+{id:"devir",cat:"motor",icon:"↻",name:"Senkron Devir",desc:"Frekans ve kutup sayısından senkron hız.",fields:[["f","Frekans (Hz)",50],["p","Kutup sayısı",4]],run:function(x){return {value:n(120*x.f/x.p)+" rpm",formula:"ns = 120f / p",detail:"Senkron devir",note:"Asenkron motorun gerçek devri kayma nedeniyle daha düşüktür."}}},
+{id:"tork",cat:"motor",icon:"τ",name:"Motor Torku",desc:"Güç ve devire göre yaklaşık tork.",fields:[["p","Güç (kW)",7.5],["rpm","Devir (rpm)",1450]],run:function(x){return {value:n(9550*x.p/x.rpm)+" N·m",formula:"T ≈ 9550 × P / n",detail:"Nominal tork",note:"Yaklaşık mekanik değer."}}},
+{id:"gerilimbusumu",cat:"kablo",icon:"ΔV",name:"Gerilim Düşümü",desc:"Tek faz hatta direnç esaslı yaklaşık gerilim düşümü.",fields:[["i","Akım (A)",20],["l","Tek yön uzunluk (m)",50],["s","Kesit (mm²)",4]],run:function(x){var dv=2*x.i*0.0175*x.l/x.s;return {value:n(dv)+" V",formula:"ΔV ≈ 2IρL/S",detail:"Yaklaşık yüzde: "+n(dv/230*100)+" %",note:"AC reaktansı ve kurulum koşulları bu ön hesabı değiştirebilir."}}},
+{id:"direnc",cat:"kablo",icon:"R",name:"İletken Direnci",desc:"Uzunluk ve kesitten yaklaşık DC direnç.",fields:[["l","Uzunluk (m)",100],["s","Kesit (mm²)",4]],run:function(x){return {value:n(0.0175*x.l/x.s)+" Ω",formula:"R = ρL/S",detail:"Bakır için ρ≈0,0175",note:"Sıcaklık etkisi dikkate alınmamıştır."}}},
+{id:"komp",cat:"komp",icon:"φ",name:"Kompanzasyon kVAr",desc:"Mevcut ve hedef cosφ için yaklaşık kvar.",fields:[["kw","Aktif güç (kW)",100],["pf1","Mevcut cosφ",0.75],["pf2","Hedef cosφ",0.98]],run:function(x){var q=x.kw*(Math.tan(Math.acos(x.pf1))-Math.tan(Math.acos(x.pf2)));return {value:n(q)+" kVAr",formula:"Qc = P(tanφ₁ − tanφ₂)",detail:"Yaklaşık kompanzasyon ihtiyacı",note:"Kademe, harmonik ve yük profili ayrıca değerlendirilmelidir."}}},
+{id:"reaktif",cat:"komp",icon:"Q",name:"Reaktif Güç",desc:"kW ve cosφ ile yaklaşık kVAr.",fields:[["kw","Aktif güç (kW)",50],["pf","cosφ",0.8]],run:function(x){return {value:n(x.kw*Math.tan(Math.acos(x.pf)))+" kVAr",formula:"Q = P tanφ",detail:"Reaktif güç",note:"İdeal endüktif yük yaklaşımı."}}},
+{id:"enerji",cat:"enerji",icon:"kWh",name:"Enerji Tüketimi",desc:"Güç ve süre ile kWh tüketimi.",fields:[["kw","Güç (kW)",2.2],["h","Saat",8],["d","Gün",30]],run:function(x){return {value:n(x.kw*x.h*x.d)+" kWh",formula:"E = P × t",detail:"Dönemsel enerji",note:"Sabit güç varsayımı."}}},
+{id:"maliyet",cat:"enerji",icon:"₺",name:"Elektrik Maliyeti",desc:"Tüketim ve birim fiyat ile yaklaşık maliyet.",fields:[["kwh","Tüketim (kWh)",450],["price","TL/kWh",3.5]],run:function(x){return {value:n(x.kwh*x.price)+" TL",formula:"Maliyet = kWh × fiyat",detail:"Yaklaşık enerji bedeli",note:"Vergi, tarife ve sözleşme detaylarını içermeyebilir."}}},
+{id:"trafo",cat:"enerji",icon:"T",name:"Trafo Akımı",desc:"kVA ve gerilimden trifaze nominal akım.",fields:[["kva","Trafo (kVA)",100],["v","Gerilim (V)",400]],run:function(x){return {value:n(x.kva*1000/(Math.sqrt(3)*x.v))+" A",formula:"I = S / (√3 × V)",detail:"Nominal hat akımı",note:"İdeal nominal değer."}}},
+{id:"paralel",cat:"temel",icon:"R∥",name:"Paralel Direnç",desc:"İki direnç için eşdeğer direnç.",fields:[["r1","R1 (Ω)",10],["r2","R2 (Ω)",20]],run:function(x){return {value:n((x.r1*x.r2)/(x.r1+x.r2))+" Ω",formula:"Req = R1R2/(R1+R2)",detail:"Eşdeğer direnç",note:"İki ideal direnç."}}},
+{id:"seri",cat:"temel",icon:"RΣ",name:"Seri Direnç",desc:"Üç direncin seri eşdeğeri.",fields:[["r1","R1 (Ω)",10],["r2","R2 (Ω)",20],["r3","R3 (Ω)",30]],run:function(x){return {value:n(x.r1+x.r2+x.r3)+" Ω",formula:"Req = R1 + R2 + R3",detail:"Eşdeğer direnç",note:"Üç ideal seri direnç."}}},
+{id:"rc",cat:"oto",icon:"RC",name:"RC Zaman Sabiti",desc:"Direnç ve kapasite ile zaman sabiti.",fields:[["r","R (Ω)",10000],["c","C (µF)",100]],run:function(x){return {value:n(x.r*x.c/1000)+" ms",formula:"τ = R × C",detail:"Zaman sabiti",note:"Kapasite µF olarak girilir."}}},
+{id:"frekans",cat:"oto",icon:"f",name:"Frekans → Periyot",desc:"Frekans değerini milisaniye cinsinden periyoda çevir.",fields:[["f","Frekans (Hz)",50]],run:function(x){return {value:n(1000/x.f)+" ms",formula:"T = 1/f",detail:"Periyot",note:"Periyot saniye cinsinden T=1/f'tir."}}},
+{id:"pompaguc",cat:"motor",icon:"H",name:"Pompa Gücü",desc:"Debi, basma yüksekliği ve verimden yaklaşık hidrolik güç.",fields:[["q","Debi (L/s)",10],["h","Basma yüksekliği (m)",25],["eta","Verim",0.7]],run:function(x){return {value:n(9.81*x.q*x.h/(1000*x.eta))+" kW",formula:"P ≈ ρgQH/η",detail:"Su varsayımı",note:"Motor seçimi için pompa üreticisi verileri esas alınmalıdır."}}},
+{id:"aydinlatma",cat:"enerji",icon:"LED",name:"Aydınlatma Tüketimi",desc:"Armatür sayısı ve çalışma süresinden kWh.",fields:[["num","Armatür adedi",20],["w","Güç (W)",40],["h","Günlük saat",8],["d","Gün",30]],run:function(x){return {value:n(x.num*x.w*x.h*x.d/1000)+" kWh",formula:"E = n × W × h × gün / 1000",detail:"Aylık tüketim",note:"Sabit çalışma süresi varsayımı."}}}
+];
+
+var guides=[
+{id:"kablo",title:"Kablo kesiti nasıl belirlenir?",text:"Akım taşıma kapasitesi, gerilim düşümü ve kurulum koşullarını birlikte düşün.",body:"Kablo kesiti tek başına amper değerine bakılarak seçilmez. Yük akımı, kablonun döşeme şekli, ortam sıcaklığı, gruplanma, gerilim düşümü ve kısa devre şartları birlikte değerlendirilmelidir. ElektrikLab ön boyutlandırma için yardımcı olur; nihai seçim proje şartlarına göre doğrulanmalıdır."},
+{id:"motor",title:"Üç faz motor akımı nasıl hesaplanır?",text:"kW, gerilim, cosφ ve verimin motor akımına etkisini öğren.",body:"Yaklaşık formül I = P / (√3 × V × cosφ × η) şeklindedir. Burada P motor mekanik çıkış gücünü, V hatlar arası gerilimi, cosφ güç faktörünü, η ise verimi temsil eder. Gerçek tasarımda motor etiketindeki nominal akım esas alınmalıdır."},
+{id:"komp",title:"Kompanzasyonun mantığı",text:"kW, kVAr, kVA ve cosφ arasındaki ilişkiyi öğren.",body:"Aktif güç P, reaktif güç Q ve görünür güç S güç üçgeninin temel büyüklükleridir. cosφ = P/S olarak düşünülebilir. Hedef cosφ'ye yaklaşmak için yaklaşık Qc = P(tanφ1 − tanφ2) bağıntısı kullanılabilir."},
+{id:"gerilim",title:"Gerilim düşümü neden önemlidir?",text:"Uzun hatlarda gerilim kaybının temel nedenini ve basit hesabı öğren.",body:"İletkenin direnci sıfır değildir. Yük akımı bu direnç üzerinden geçerken gerilim kaybı oluşur. Basit bir ön hesapta R = ρL/S ve ardından ΔV ≈ I×R ilişkisi kullanılabilir. AC sistemlerde reaktans ve diğer etkiler de dikkate alınmalıdır."}
+];
+
+function n(v){var z=Math.round(v*100)/100;return String(z).replace(".",",")}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+
+function showPage(id){
+var ids=["home","calculators","guides","tables","detail","guideDetail"];
+var i;
+for(i=0;i<ids.length;i++){document.getElementById(ids[i]).className="page"+(ids[i]===id?" active":"")}
+document.getElementById("navHome").className=id==="home"?"active":"";
+document.getElementById("navCalc").className=(id==="calculators"||id==="detail")?"active":"";
+document.getElementById("navGuides").className=(id==="guides"||id==="guideDetail")?"active":"";
+document.getElementById("navTables").className=id==="tables"?"active":"";
+window.scrollTo(0,0);
+}
+
+function card(c){
+return '<article class="card"><div class="icon">'+esc(c.icon)+'</div><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p><div class="cardrow"><button class="link" onclick="openCalc(\''+c.id+'\')">Aç →</button><button class="star" onclick="alert(\'Favori özelliği bu sürümde temel uyumluluk için devre dışı bırakıldı.\')">☆</button></div></article>';
+}
+function renderCalc(){
+var q=document.getElementById("search").value.toLowerCase(), cat=document.getElementById("cat").value, h="",i,c;
+for(i=0;i<calculators.length;i++){c=calculators[i];if((cat==="all"||c.cat===cat)&&(c.name.toLowerCase().indexOf(q)>=0||c.desc.toLowerCase().indexOf(q)>=0)){h+=card(c)}}
+document.getElementById("calcGrid").innerHTML=h||'<div class="box">Aradığın hesaplama bulunamadı.</div>';
+}
+function openCalc(id){
+var i,c,f,h="";
+for(i=0;i<calculators.length;i++){if(calculators[i].id===id){c=calculators[i];break}}
+if(!c)return;
+h='<div class="detail"><div class="box"><button class="btn ghost" onclick="showPage(\'calculators\')">← Hesaplamalara dön</button><div class="ey" style="margin-top:18px">HESAPLAMA</div><h1>'+esc(c.icon)+' '+esc(c.name)+'</h1><p class="muted">'+esc(c.desc)+'</p><div class="fields">';
+for(i=0;i<c.fields.length;i++){f=c.fields[i];h+='<div class="field"><label for="f'+i+'">'+esc(f[1])+'</label><input id="f'+i+'" type="number" value="'+esc(f[2])+'"></div>'}
+h+='</div><button class="btn primary" style="margin-top:16px;width:100%" onclick="calculate(\''+c.id+'\')">Hesapla</button></div><div id="calcResult" class="result"><div class="small">SONUÇ</div><div class="big">Değerleri girip hesapla</div><p style="color:#b6cbc2">Sonuç ve kullanılan formül burada görünecek.</p></div></div>';
+document.getElementById("detailContent").innerHTML=h;showPage("detail");
+}
+function calculate(id){
+var i,c,x={},f,inp,res;
+for(i=0;i<calculators.length;i++){if(calculators[i].id===id){c=calculators[i];break}}
+for(i=0;i<c.fields.length;i++){f=c.fields[i];inp=document.getElementById("f"+i);x[f[0]]=parseFloat(inp.value)}
+try{res=c.run(x)}catch(e){document.getElementById("calcResult").innerHTML='<div class="small">HATA</div><div class="big">Geçersiz değer</div><p style="color:#b6cbc2">Lütfen alanları kontrol et.</p>';return}
+document.getElementById("calcResult").innerHTML='<div class="small">'+esc(res.detail)+'</div><div class="big">'+esc(res.value)+'</div><div class="formula">'+esc(res.formula)+'</div><div class="note">'+esc(res.note)+'</div>';
+}
+function renderPopular(){var h="",i;for(i=0;i<8&&i<calculators.length;i++)h+=card(calculators[i]);document.getElementById("popular").innerHTML=h}
+function renderGuides(){var h="",i,g;for(i=0;i<guides.length;i++){g=guides[i];h+='<article class="card"><div class="icon">📘</div><h3>'+esc(g.title)+'</h3><p>'+esc(g.text)+'</p><div class="cardrow"><button class="link" onclick="openGuide(\''+g.id+'\')">Oku →</button></div></article>'}document.getElementById("guideGrid").innerHTML=h}
+function openGuide(id){var i,g;for(i=0;i<guides.length;i++){if(guides[i].id===id){g=guides[i];break}}if(!g)return;document.getElementById("guideDetailContent").innerHTML='<div class="box"><button class="btn ghost" onclick="showPage(\'guides\')">← Rehberlere dön</button><div class="ey" style="margin-top:18px">TEKNİK REHBER</div><h1>'+esc(g.title)+'</h1><div class="article"><p>'+esc(g.body)+'</p></div></div>';showPage("guideDetail")}
+renderCalc();renderPopular();renderGuides();document.getElementById("countStat").innerHTML=calculators.length+"+";
+</script>
+</body>
+</html>
